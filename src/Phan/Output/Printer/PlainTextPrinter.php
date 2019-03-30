@@ -26,7 +26,8 @@ final class PlainTextPrinter implements IssuePrinterInterface
      */
     public function print(IssueInstance $instance)
     {
-        $file    = $instance->getFile();
+        // chang file to full path for phpstorm external tools can click to source.
+        $file    = Config::getProjectRootDirectory().DIRECTORY_SEPARATOR. $instance->getFile();
         $line    = $instance->getLine();
         $issue   = $instance->getIssue();
         $type    = $issue->getType();
